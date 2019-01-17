@@ -1,108 +1,169 @@
 <template>
-	<div class="py-5 px-5 flexxx justify-content-center">
-    <template v-for="store in stores" >
-      <div :key="store.name" class="store my-4 mx-4">
-        <img :src="urls.host + urls.routes.prefix + store.photopath" class="img-card"> 
-        <h1 class="mb-3 mt-2">{{ store.name }}</h1>
-        
+  <div class="py-5 px-5 flexxx justify-content-center">
+    <div class="header">
+      <img class="logo" src="../assets/caprabo_logo.png" alt="caprabo">
+      <h1 class="header__titel">A quina parada vols demanar torn?</h1>
+    </div>
+    <template v-for="store in stores">
+      <div :key="store.name" class="store my-5 mx-5" @click="normalTurn(store)">
+        <img :src="urls.host + urls.routes.prefix + store.photopath" class="img-card md-image">
+        <h1 class="mb-3 mt-3 store__titel">{{ store.name }}</h1>
+        <!--
         <div class="boton_Torn row justify-content-center">
           <div class="mx-2">
             <button class="btn btn-primary" @click="normalTurn(store)">Demanar Turn</button>
           </div>
         </div>
-
+        -->
+        <div class="store__footer">
+          <h3 class="store_queue_person">Hi ha * persones a la cua</h3>
+          <div class="time_content">
+            <img class="store_queue_time_icon" src="../assets/time_icon.png" alt="time">
+            <h3 class="store_queue_time">* min</h3>
+          </div>
+        </div>
       </div>
     </template>
-
-
-	</div>
+  </div>
 </template>
 
 <script>
-import urls from '../api/config';
+import urls from "../api/config";
 
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-	components: {
-	},
-	data() {
-		return {
-			stores: [],
-      urls : urls,
-			showTurnsModal: false,
-			storeModal: {},
-		}
-	},
-	created() {
-        const url = urls.host + urls.routes.prefix + urls.routes.stores
-		axios.get(url)
-			.then(res => {
+  components: {},
+  data() {
+    return {
+      stores: [],
+      urls: urls,
+      showTurnsModal: false,
+      storeModal: {}
+    };
+  },
+  created() {
+    const url = urls.host + urls.routes.prefix + urls.routes.stores;
+    axios
+      .get(url)
+      .then(res => {
         this.stores = res.data;
-
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	},
-	methods: {
-		showTurnsListModal(store) {
-			this.storeModal = store;
-			this.showTurnsModal = true;
-		},
-		closeModal() {
-			this.showTurnsModal = false;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  methods: {
+    showTurnsListModal(store) {
+      this.storeModal = store;
+      this.showTurnsModal = true;
+    },
+    closeModal() {
+      this.showTurnsModal = false;
     },
     normalTurn(store) {
-			const url = urls.host + urls.routes.prefix + urls.routes.store + '/' + store.id + '/turn';
- 
-      
-			axios.post(url)
-				.then(res => {
-         this.$swal({
-            type: 'success',
-            title: 'Imprimir tiquet T' + res.data.number ,
+      const url =
+        urls.host +
+        urls.routes.prefix +
+        urls.routes.store +
+        "/" +
+        store.id +
+        "/turn";
+
+      axios
+        .post(url)
+        .then(res => {
+          this.$swal({
+            type: "success",
+            title: "Imprimir tiquet T" + res.data.number,
             showConfirmButton: false,
             timer: 2500
-					})
-					console.log('Imprimir tiquet T' + res.data.number);
-					//this.$swal('Imprimir tiquet' + JSON.stringify(res.data));
-      })
-				.catch(err => {
-					this.$swal('Failako');
-			});
-		},
-	}
-}
+          });
+          console.log("Imprimir tiquet T" + res.data.number);
+          //this.$swal('Imprimir tiquet' + JSON.stringify(res.data));
+        })
+        .catch(err => {
+          this.$swal("Failako");
+        });
+    }
+  }
+};
 </script>
 
 <style>
 .flexxx {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  color: #5e6270;
+}
+.logo {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.header__titel {
+  font-size: 4em;
+  margin: 30px auto;
 }
 
 .store {
-	position: relative;
-	width: 350px;
-	height: 500px;
-	border: 1px solid rgba( 50, 50, 50, 0.5);
-	border-radius: 3px;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-
+  position: relative;
+  width: 600px;
+  height: 500px;
+  border-radius: 3px;
+  background-color: #eee;
+}
+.store__titel {
+  color: #4c5261;
+  font-size: 4.5em;
+  font-weight: 400;
 }
 
 .img-card {
-	height: 150px;
-	width: auto;
-
-	margin: auto;
-}
-.boton_Torn{
-	  position: absolute;
-    bottom: 60px;
-    width: 100%;
-    margin-left: 0px;
+  height: 70%;
+  width: 100%;
+  margin: auto;
 }
 
+.store__footer {
+  position: absolute;
+  bottom: 0px;
+  font-size: 2em;
+  width: 100%;
+  height: 65px;
+  color: #6a6e71;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.store_queue_person {
+  width: 60%;
+  margin: 0;
+  justify-self: flex-start;
+}
+
+.time_content {
+  display: flex;
+  align-items: center;
+  width: 25%;
+}
+
+.store_queue_time_icon {
+  width: 50px;
+}
+.store_queue_time {
+  margin: 0;
+}
+.boton_Torn {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+  margin-left: 0px;
+}
 </style>
