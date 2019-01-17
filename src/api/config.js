@@ -2,8 +2,8 @@
 
 export default {
 
-  //host: 'http://localhost',
-  host: 'http://labs.iam.cat/~a16josortmar',
+  host: 'http://192.168.1.48',
+  //host: 'http://labs.iam.cat/~a16josortmar',
   port: 80,
 
   routes: {

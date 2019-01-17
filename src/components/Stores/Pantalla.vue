@@ -1,5 +1,5 @@
 <template>
-	<div class="store my-2 mx-2">
+	<div class="store_pantalla my-2 mx-2">
 		<h1 class="mb-3 mt-2">Torns {{ store.name }}</h1>
 
 		<h3 class="mb-1">Torn Actual: {{ computedActualTurn }}</h3>
@@ -25,7 +25,7 @@
                         </template>
                     </div>
 
-                    <div class="col-md-4 turn-column">
+                    <div class="col-md-4 turn-column turn-column-end">
                         <h3>VIP</h3>
                         <template v-for="(turn, index) in vipTurns">
                             <p :key="index">V{{ turn.number }}</p>
@@ -162,7 +162,7 @@ export default {
 
 <style>
 
-.store {
+.store_pantalla {
 	width: 700px;
 	height: 700px;
 	border: 1px solid rgba( 50, 50, 50, 0.5);
@@ -171,11 +171,17 @@ export default {
 
 }
 
-.img-card {
+.img-card_pantalla {
 	height: 150px;
 	width: auto;
 
 	margin: auto;
 }
 
+.turn-column{
+	border-right: 1px solid black;
+}
+.turn-column-end{
+	border: none;
+}
 </style>

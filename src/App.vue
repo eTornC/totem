@@ -6,6 +6,7 @@
 			</div>
 			<a class="nav-link text-white" @click="$router.push({ name: 'storeList'})">storeList</a>
       <a class="nav-link text-white" @click="$router.push({ name: 'totem' })">Totem</a>
+      <a class="nav-link text-white" @click="$router.push({ name: 'mobile' })">App</a>
     </nav>
     
     <router-view class="" />

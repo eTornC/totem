@@ -1,11 +1,11 @@
 <template>
 	<div class="py-5 px-5 flexxx justify-content-center">
     <template v-for="store in stores" >
-      <div :key="store.name" class="store my-4 mx-4">
-        <img :src="urls.host + urls.routes.prefix + store.photopath" class="img-card"> 
-        <h1 class="mb-3 mt-2">{{ store.name }}</h1>
+      <div :key="store.name" class="store-app my-3 mx-4">
+        <img :src="urls.host + urls.routes.prefix + store.photopath" class="img-card-app .md-image"> 
+        <h2 class="mb-3 mt-2">{{ store.name }}</h2>
         
-        <div class="boton_Torn row justify-content-center">
+        <div class="boton_Torn-app row justify-content-center">
           <div class="mx-2">
             <button class="btn btn-primary" @click="normalTurn(store)">Demanar Turn</button>
           </div>
@@ -61,11 +61,11 @@ export default {
 				.then(res => {
          this.$swal({
             type: 'success',
-            title: 'Imprimir tiquet T' + res.data.number ,
+            title: 'Turn demanat A' + res.data.number ,
             showConfirmButton: false,
-            timer: 2500
+            timer: 2000
 					})
-					console.log('Imprimir tiquet T' + res.data.number);
+					console.log('Torn demanat A' + res.data.number);
 					//this.$swal('Imprimir tiquet' + JSON.stringify(res.data));
       })
 				.catch(err => {
@@ -82,27 +82,38 @@ export default {
 	flex-wrap: wrap;
 }
 
-.store {
+.store-app {
 	position: relative;
-	width: 350px;
-	height: 500px;
-	border: 1px solid rgba( 50, 50, 50, 0.5);
+	width: 100%;
+	height: auto;
+	border-bottom: 1px solid rgba( 50, 50, 50, 0.5);
 	border-radius: 3px;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	/*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
+	padding-bottom: 30px;
 
+    display: flex;
+	
+}
+.store-app > h2 {
+    width: 35%;
+    height: 30%;
+    align-self: center;
 }
 
-.img-card {
-	height: 150px;
-	width: auto;
-
-	margin: auto;
+.img-card-app {
+	height: 150px !important;
+    width: 35%;
+	margin: 0px;
 }
-.boton_Torn{
-	  position: absolute;
-    bottom: 60px;
-    width: 100%;
+.boton_Torn-app{
+    width: 30%;
     margin-left: 0px;
+    height: 41%;
+    align-self: center;
+}
+
+.boton_Torn-app button{
+	font-size: 1rem;
 }
 
 </style>
