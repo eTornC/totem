@@ -19,7 +19,7 @@
           <h3 class="store_queue_person">Hi ha * persones a la cua</h3>
           <div class="time_content">
             <img class="store_queue_time_icon" src="../assets/time_icon.png" alt="time">
-            <h3 class="store_queue_time"> * min</h3>
+            <h3 class="store_queue_time">* min</h3>
           </div>
         </div>
       </div>
@@ -89,7 +89,6 @@ export default {
   }
 };
 </script>
-
 <style>
 .flexxx {
   display: flex;

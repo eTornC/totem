@@ -5,8 +5,10 @@
 				eTorn!
 			</div>
 			<a class="nav-link text-white" @click="$router.push({ name: 'storeList'})">storeList</a>
-      <a class="nav-link text-white" @click="$router.push({ name: 'totem' })">Totem</a>
+      <a class="nav-link text-white" @click="$router.push({ name: 'totem' })">Totem Principar</a>
+      <a class="nav-link text-white" @click="$router.push({ name: 'totemCarnisseria' })">TotemCarnisseria</a>
       <a class="nav-link text-white" @click="$router.push({ name: 'mobile' })">App</a>
+      <a class="nav-link text-white" @click="$router.push({ name: 'admin' })">Admin</a>
     </nav>
     
     <router-view class="" />
