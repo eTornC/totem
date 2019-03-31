@@ -1,7 +1,6 @@
 <template>
 	<div class="store_pantalla my-2 mx-2">
 		<h1 class="mb-3 mt-2">Torns {{ store.name }}</h1>
-
 		<h3 class="mb-1">Torn Actual: {{ computedActualTurn }}</h3>
         <div class="mb-3">
 			<button class="btn btn-primary" @click="nextTurn()">Passar torn</button>

@@ -3,12 +3,13 @@ import Router from 'vue-router'
 import home from '@/components/home'
 import storeList from '@/components/Stores/storeList'
 import totem from '@/components/Totem'
-import totemCarnisseria from '@/components/TotemCarnisseria'
 import Mobile from '@/components/Mobile'
 import Admin from '@/components/admin'
 import totemManager from '@/components/paleta/totemManager'
 import screenManager from '@/components/paleta/screenManager'
 import storeManager from '@/components/paleta/storeManager'
+
+
 
 
 Vue.use(Router)
@@ -30,11 +31,7 @@ export default new Router({
       name: 'totem',
       component: totem
     },
-    {
-      path: '/totemCarnisseria',
-      name: 'totemCarnisseria',
-      component: totemCarnisseria
-    },
+ 
     {
       path: '/mobile',
       name: 'mobile',

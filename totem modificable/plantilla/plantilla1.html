@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <nav>
+            <a href="plantilla1.html">plantilla1</a>
+            <a href="plantilla2.html">plantilla2</a>
+            <a href="plantilla3.html">plantilla3</a>
+            <a href="plantilla4.html">plantilla4</a>
+        </nav>
+    </div>
+    <div class="workSpace">
+
+
+        <div class="storeList" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div ondragstart="dragStart(event)" draggable="true" id="carniseria">
+                <img draggable="false" src="img/carnisseria.jpeg" width="200px" height="100px" alt="imatge CARN" srcset="">
+                <h1>carniseria</h1>
+            </div>
+            <div ondragstart="dragStart(event)" draggable="true" id="shusi">
+                <img draggable="false" src="img/pan.jpg" width="200px" height="100px" alt="imatge shusi" srcset="">
+                <h1>shusi</h1>
+            </div>
+            <div ondragstart="dragStart(event)" draggable="true" id="fontPan">
+                <img draggable="false" src="img/sushi.jpg" width="200px" height="100px" alt="imatge pan" srcset="">
+                <h1>fontPan</h1>
+            </div>
+        </div>
+
+        <div class="totem">
+            <div id="store1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+            </div>
+            <div id="store2" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+            </div>
+            <div id="store3" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+            </div>
+            <div id="store4" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+
+        </div>
+    </div>
+
+
+    <style>
+        .workSpace {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .storeList {
+            width: 20%;
+            height: 700px;
+            border: 2px solid mediumslateblue;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        .storeList div {
+            height: auto;
+            display: block;
+            border: 1px solid black;
+        }
+
+        .totem {
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        #store1 {
+            width: 100%;
+            height: 300px;
+            border: 2px solid palegreen;
+            box-sizing: border-box;
+        }
+
+        #store2 {
+            width: 50%;
+            height: 300px;
+            border: 2px solid palevioletred;
+            box-sizing: border-box;
+        }
+
+        #store3 {
+            width: 50%;
+            height: 300px;
+            border: 2px solid orange;
+            box-sizing: border-box;
+        }
+
+        #store4 {
+            width: 100%;
+            height: 300px;
+            border: 2px solid brown;
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+
+select * form totemDiv where id_pantalla = *;
+
+totem_div{
+	torn_id: 1,
+	posicio: 1,
+}
+totem_div{
+	torn_id: 5,
+	posicio: 2,
+}
+totem_div{
+	torn_id: 4,
+	posicio: 3,
+}
+

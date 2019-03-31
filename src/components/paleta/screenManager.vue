@@ -1,15 +1,16 @@
 <template>
   <div id="screenManager">
-    <div class="row">
+    <div class="row rowFist">
       <div class="col-2 sidebar">
         <div class="sidenav">
           <br>
-          <button type="button"  class="btn btn-primary boton">Add Colum</button>
-          <button type="button" class="btn btn-primary boton">Add row</button>
-          <div v-on:click="get_posision" row="0" column="0">prova</div>
+          <button v-on:click="add_column" type="button" class="btn btn-primary boton">Add Colum</button>
+          <button v-on:click="add_row" type="button" class="btn btn-primary boton">Add row</button>
         </div>
       </div>
-      <div v-html="html" class="col-10" id="show">{{html}}</div>
+      <div class="col-10" id="show">
+        <row :jsonConfig="row"  class="px-3 py-3 mx-0"/>
+      </div>
     </div>
   </div>
 </template>
@@ -20,23 +21,48 @@ export default {
 
   data() {
     return {
-      msg:'hola',
+      msg: "hola",
       html: null,
       select: {
-        row:null,
-        column:null,
+        row: null,
+        column: null
       },
-      pantalla_layout: {
-        rows: [
+      jsonConfig: {
+        cols: [
           {
-            columns: [
+            id: "r1c1",
+            width: 4,
+            rows: [
               {
-                id: "store1",
-                text: "col 10",
-                width: 12,
-                color: "green",
-                row: 0,
-                col: 0
+                id: "r1-1c1",
+                content: "Alo"
+              },
+              {
+                id: "r1-2c1",
+                content: "Alo"
+              },
+              {
+                id: "r1-2c3",
+                content: "Alo"
+              }
+            ]
+          },
+          {
+            id: "r1c2",
+            width: 4,
+            content: "Aloha"
+          },
+          {
+            id: "r1c3",
+            width: 4,
+            rows: [
+              {
+                id: "r1-1c1",
+                content: "Alo"
+              },
+              {
+                id: "r1-2c1",
+                content: "Alo"
               }
             ]
           }
@@ -44,78 +70,44 @@ export default {
       }
     };
   },
-  created() {
-    this.mount();
-  },
+  created() {},
   methods: {
-    get_posision(event) {
-      console.log(event.target); // Output : Select span|i|a element
-      this.select.row = event.target.getAttribute("row");
-      this.select.column = event.target.getAttribute("column");
-      console.log(this.select.row + ", "+ this.select.column ); 
+    add_row() {
+      //console.log(newRowPosicion);
     },
-    createRow(r) {
-      return (
-        '<div class="row">' + '{{msg}}'+
-        this.parse(r) +
-        "</div>"
-      );
-    },
-    createColumn(c) {
-      return (
-        '<div v-on:click="get_posision" style="background-color : ' +
-        c.color +
-        "; height :400px" +
-        '" class="col-' +
-        c.width +
-        '" id="' +
-        c.id +
-         '" row="' +
-        c.row +
-        '" column="' +
-        c.col +
-        '">' +
-        (c.text ? c.text : "") +
-        this.parse(c) +
-        "</div>"
-      );
-    },
-    parse(s) {
-      let S = "";
-      if (s.rows) {
-        for (let i in s.rows) {
-          S += this.createRow(s.rows[i]);
-        }
-      }
-      if (s.columns) {
-        for (let i in s.columns) {
-          S += this.createColumn(s.columns[i]);
-        }
-      }
-      return S;
-    },
-    mount() {
-      this.html = this.parse(this.pantalla_layout);
-    },
-    addevent() {
-      $(".screen-row").attr('v-on:click'+'get_class');
-      $(".screen-column").html('v-on:click'+'get_class');
-    }
-  }
+    add_column() {}
+  },
+
+  mounted() {}
 };
 </script>
 
 <style>
 .row {
-  height: 900px;
   border: 1px solid #eee;
+  box-sizing: border-box;
+  margin: 0;
+}
+.rowFist {
+  margin: 0;
 }
 .sidebar {
   border: 1px solid #eee;
+  box-sizing: border-box;
 }
 
 .boton {
   width: 200px;
   margin: 10px;
+}
+
+.screen-column {
+  border: 1px solid rgb(255, 153, 0);
+  box-sizing: border-box;
+  padding: 0px;
+}
+
+.screen-column:hover {
+  border: 2px solid aquamarine;
 }
 </style>

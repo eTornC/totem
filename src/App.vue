@@ -1,15 +1,14 @@
 <template>
   <div id="app">
-    <nav class="navbar bg-primary navbar-expand-lg navbar-dark py-2">
+    <!--nav class="navbar bg-primary navbar-expand-lg navbar-dark py-2">
 			<div class="navbar-brand mr-4" @click="$router.push({ name: 'home'})">
 				eTorn!
 			</div>
 			<a class="nav-link text-white" @click="$router.push({ name: 'storeList'})">storeList</a>
       <a class="nav-link text-white" @click="$router.push({ name: 'totem' })">Totem Principar</a>
-      <a class="nav-link text-white" @click="$router.push({ name: 'totemCarnisseria' })">TotemCarnisseria</a>
       <a class="nav-link text-white" @click="$router.push({ name: 'mobile' })">App</a>
       <a class="nav-link text-white" @click="$router.push({ name: 'admin' })">Admin</a>
-    </nav>
+    </nav-->
     
     <router-view class="" />
   </div>

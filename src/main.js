@@ -7,6 +7,13 @@ import router from './router'
 import VueMaterial from 'vue-material'
 import VueSweetAlert from 'vue-sweetalert2'
 
+import showRowGenerator from './components/showScreen/showRowGenerator.vue';
+import showColGenerator from './components/showScreen/showColGenerator.vue';
+import showContentGenerator from './components/showScreen/showContentGenerator.vue';
+Vue.component('show-row-component', showRowGenerator);
+Vue.component('show-col-component', showColGenerator);
+Vue.component('show-content-component', showContentGenerator);
+
 Vue.use(VueMaterial)
 Vue.use(VueSweetAlert)
 
