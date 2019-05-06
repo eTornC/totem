@@ -1,7 +1,7 @@
 <template>
   <div v-if="store" class="turn_list">
     <div class="store" @click="normalTurn(store)">
-      <img :src="urls.host + urls.routes.prefix + store.photopath" class="img-card md-image">
+      <img :src="urls.host + urls.routes.prefix + store.photo_path" class="img-card md-image">
       <h1 class="mb-3 mt-3 store__titel">{{ store.name }}</h1>
       <!--
         <div class="boton_Torn row justify-content-center">
@@ -60,11 +60,11 @@ export default {
     getStore() {
       const url =
         urls.host + urls.routes.prefix + urls.routes.store + "/" + this.storeId;
-      //console.log(url);
+      console.log(url);
       axios
         .get(url)
         .then(res => {
-          this.store = res.data[0];
+          this.store = res.data;
         })
         .catch(err => {
           console.error(err);

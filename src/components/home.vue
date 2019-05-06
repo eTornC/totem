@@ -12,8 +12,8 @@
       <tbody>
         <tr v-for="(template,index) in templates" :key="template.ID">
           <td>{{index + 1}}</td>
-          <td>{{template.NAME}}</td>
-          <td>{{template.DESCRIPTION}}</td>
+          <td>{{template.name}}</td>
+          <td>{{template.description}}</td>
           <td>
             <button type="button" @click="select(index)" class="btn btn-primary">Mostra</button>
           </td>
@@ -27,7 +27,7 @@
       <h1 class="header__titel">A quina parada vols demanar torn?</h1>
     </div>
     <div class="turnsView">
-      <showScreen-component :jsonConfig="JSON.parse(templateSelect.LAYOUT)"/>
+      <showScreen-component :jsonConfig="templateSelect.layout"/>
     </div>
     <!--button type="button" @click="select(null)" class="btn btn-danger">cancel</button-->
   </div>
@@ -57,14 +57,14 @@ export default {
   },
   methods: {
     getTemplates() {
-      const url = urls.host + urls.routes.apiPrefix + urls.routes.layouts;
+      const url = urls.host + urls.routes.prefix + urls.routes.layouts;
       //console.log(url);
       var reference = this;
       axios
         .get(url)
         .then(res => {
-          reference.templates = res.data.records.filter(
-            layout => layout.TYPE == "TOTEM"
+          reference.templates = res.data.filter(
+            layout => layout.type == "TOTEMSCREEN"
           );
           console.log(reference.templates);
         })
