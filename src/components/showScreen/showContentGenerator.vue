@@ -3,38 +3,15 @@
     <div class="store" @click="normalTurn(store)">
       <img :src="urls.host + urls.routes.prefix + store.photo_path" class="img-card md-image">
       <h1 class="mb-3 mt-3 store__titel">{{ store.name }}</h1>
-      <!--
-        <div class="boton_Torn row justify-content-center">
-          <div class="mx-2">
-            <button class="btn btn-primary" @click="normalTurn(store)">Demanar Turn</button>
-          </div>
-        </div>
-      -->
-      <div class="store__footer">
+
+      <!--div class="store__footer">
         <h3 class="store_queue_person">Hi ha * persones a la cua</h3>
         <div class="time_content">
           <img class="store_queue_time_icon" src="../../assets/time_icon.png" alt="time">
           <h3 class="store_queue_time">* min</h3>
         </div>
-      </div>
+      </div-->
     </div>
-    <!--div class="store_name_content">
-      <div class="store_name">
-        <span>{{store.name}}</span>
-      </div>
-    </div>
-    <div class="store_turn_content">
-      <div class="store_turn">
-        <ul>
-          <li>
-            <span class="actual">{{computedActualTurn}}</span>
-          </li>
-        </ul>
-        <ul>
-          <li :key="waiting.id" v-for="waiting in turnWaiting" >T{{waiting.number}}</li>
-        </ul>
-      </div>
-    </div-->
   </div>
 </template>
 
@@ -78,22 +55,40 @@ export default {
         "/" +
         store.id +
         "/turn";
-
+      console.log(url);
       axios
         .post(url)
         .then(res => {
+          console.log(res);
+
           this.$swal({
             type: "success",
-            title: "Imprimir tiquet T" + res.data.number,
+            title: "Imprimir tiquet T " + res.data.turn.number,
             showConfirmButton: false,
             timer: 2500
           });
-          console.log("Imprimir tiquet T" + res.data.number);
+          console.log("Imprimir tiquet T " + res.data.turn.number);
+          this.imprimirTicket(store.name, res.data.turn.number);
           //this.$swal('Imprimir tiquet' + JSON.stringify(res.data));
         })
         .catch(err => {
           this.$swal("Failako");
         });
+    },
+    imprimirTicket(storeName, number) {
+      console.log("store nombre= " + storeName + ", numbre=" + number);
+      const url = urls.impresoraHost + urls.routes.print + "/" + number;
+      console.log("print Host: " + url);
+
+      /* axios
+        .post(url)
+        .then(res => {
+          console.log(res);
+          //this.$swal('Imprimir tiquet' + JSON.stringify(res.data));
+        })
+        .catch(err => {
+          this.$swal("Failako");
+        });*/
     }
   },
   computed: {
@@ -209,7 +204,7 @@ export default {
 .store {
   position: relative;
   width: 450px;
-  height: 400px;
+  height: 300px;
   border-radius: 3px;
   background-color: #eee;
 }
@@ -220,8 +215,12 @@ export default {
   text-align: center;
 }
 
+.store h1 {
+  margin: 0 !important;
+}
+
 .img-card {
-  height: 68%;
+  height: 80%;
   width: 100%;
   margin: auto;
 }

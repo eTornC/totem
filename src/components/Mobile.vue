@@ -2,7 +2,7 @@
 	<div class="py-5 px-5 flexxx justify-content-center">
     <template v-for="store in stores" >
       <div :key="store.name" class="store-app my-3 mx-4">
-        <img :src="urls.host + urls.routes.prefix + store.photopath" class="img-card-app .md-image"> 
+        <img :src="urls.host + urls.routes.prefix + store.photo_path" class="img-card-app .md-image"> 
         <h2 class="mb-3 mt-2">{{ store.name }}</h2>
         
         <div class="boton_Torn-app row justify-content-center">
