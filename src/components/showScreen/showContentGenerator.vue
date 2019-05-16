@@ -77,18 +77,18 @@ export default {
     },
     imprimirTicket(storeName, number) {
       console.log("store nombre= " + storeName + ", numbre=" + number);
-      const url = urls.impresoraHost + urls.routes.print + "/" + number;
+      const url = urls.impresoraHost + urls.routes.print + "/" + storeName + "/" + number;
       console.log("print Host: " + url);
 
-      /* axios
+      axios
         .post(url)
         .then(res => {
           console.log(res);
           //this.$swal('Imprimir tiquet' + JSON.stringify(res.data));
         })
         .catch(err => {
-          this.$swal("Failako");
-        });*/
+          this.$swal("Impresora Error");
+        });
     }
   },
   computed: {
