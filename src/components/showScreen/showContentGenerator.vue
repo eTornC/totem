@@ -19,6 +19,7 @@
 <script>
 import urls from "../../api/config.js";
 import axios from "axios";
+
 export default {
   props: {
     storeId: Number
@@ -77,7 +78,8 @@ export default {
     },
     imprimirTicket(storeName, number) {
       console.log("store nombre= " + storeName + ", numbre=" + number);
-      const url = urls.impresoraHost + urls.routes.print + "/" + storeName + "/" + number;
+      const url =
+        urls.impresoraHost + urls.routes.print + "/" + storeName + "/" + number;
       console.log("print Host: " + url);
 
       axios
@@ -110,8 +112,8 @@ export default {
     this.resfescar = null;
     this.resfescarWaiting = null;
 
-    this.resfescar = setInterval(this.updateActualTurn, 1000);
-    this.resfescarWaiting = setInterval(this.updateTurnWaiting, 1000);
+    //this.resfescar = setInterval(this.updateActualTurn, 1000);
+    //this.resfescarWaiting = setInterval(this.updateTurnWaiting, 1000);
   }
 };
 </script>

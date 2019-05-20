@@ -14,6 +14,11 @@ Vue.component('show-row-component', showRowGenerator);
 Vue.component('show-col-component', showColGenerator);
 Vue.component('show-content-component', showContentGenerator);
 
+import rowGenerator from './components/demoLayoutBuild/RowComponent.vue';
+import colGenerator from './components/demoLayoutBuild/ColComponent.vue';
+Vue.component('row-component', rowGenerator);
+Vue.component('col-component', colGenerator);
+
 Vue.use(VueMaterial)
 Vue.use(VueSweetAlert)
 
