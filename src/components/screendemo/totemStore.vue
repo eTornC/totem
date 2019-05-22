@@ -4,8 +4,8 @@
       <img src="#" width="50px" alt="totemStore Icon">
     </div>
     <template v-else-if="mode =='complet'">
-      <div v-if="store" class="card" @click="normalTurn(store)" style="width: 70%; ">
-        <img class="card-img-top" :src="store.photo_path" alt="Card image cap">
+      <div v-if="store" class="card" @click="normalTurn(store)" style="width: 480px; ">
+        <img class="card-img-top" :src="store.photo_path" alt="Card image cap" style="height:300px">
         <div class="card-body p-1">
           <h1>{{store.name}}</h1>
         </div>
