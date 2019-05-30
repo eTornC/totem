@@ -61,7 +61,7 @@ export default {
           this.pedirTurno(store);
         })
         .catch(err => {
-          console.log(err)
+          console.log(err);
           this.$swal("Impresora Conection Error ");
         });
     },
@@ -74,10 +74,13 @@ export default {
         store.id +
         "/turn";
       console.log(url);
-     axios
+      axios
         .post(url)
         .then(res => {
           console.log(res);
+          if (res.data.turn.number.toString().length == 1) {
+            res.data.turn.number = "0" + res.data.turn.number.toString();
+          }
           this.$swal({
             type: "success",
             title: "Imprimir tiquet T " + res.data.turn.number,
@@ -94,6 +97,7 @@ export default {
     },
     imprimirTicket(storeName, number) {
       console.log("store nombre= " + storeName + ", numbre=" + number);
+
       const url =
         urls.impresoraHost + urls.routes.print + "/" + storeName + "/" + number;
       console.log("print Host: " + url);
