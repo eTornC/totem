@@ -83,11 +83,11 @@ export default {
           }
           this.$swal({
             type: "success",
-            title: "Imprimir tiquet T " + res.data.turn.number,
+            title: "Imprimir tiquet T" + res.data.turn.number,
             showConfirmButton: false,
-            timer: 2500
+            timer: 2000
           });
-          console.log("Imprimir tiquet T " + res.data.turn.number);
+          console.log("Imprimir tiquet T" + res.data.turn.number);
           this.imprimirTicket(store.name, res.data.turn.number);
           //this.$swal('Imprimir tiquet' + JSON.stringify(res.data));
         })
